@@ -3,7 +3,7 @@
 const withPWA = require("next-pwa")({
   dest: "public",
   fallbacks: {
-    document: '/offline/page.tsx',
+    document: '/_offline',
   },
 });
 
