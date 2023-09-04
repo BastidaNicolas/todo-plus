@@ -1,4 +1,4 @@
-export default function Offline() {
+export default function Page() {
     return (
       <div>
         You are offline
