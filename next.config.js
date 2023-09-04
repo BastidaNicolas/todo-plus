@@ -3,9 +3,10 @@
 const withPWA = require("@ducanh2912/next-pwa").default({
     dest: "public",
 //   buildExcludes: ["app-build-manifest.json"],
-//   fallbacks: {
-//     document: '/_offline',
-//   },
+    fallbacks: {
+        // Failed page requests fallback to this.
+        document: "/offline",
+    },
   });
 
 // const generateAppDirEntry = (entry) => {
