@@ -5,7 +5,7 @@ export default function Page() {
     return (
       <main className="max-w-sm m-auto flex flex-col items-center px-2 pt-2">
         <div className="flex justify-between items-center w-full pb-4">
-          <small className="font-bold text-sm" >To-Dos:</small>
+          <small className="font-medium text-sm" >To-Dos:</small>
           <small className="text-sm text-right" >20/300</small>
         </div>
         <div className="flex flex-col gap-2">
