@@ -1,4 +1,4 @@
-import EditBtn from "@/components/buttons/editBtn";
+import NavBtn from "@/components/buttons/navBtn";
 import StateBtn from "@/components/buttons/stateBtn";
 
 export default function Page() {
@@ -13,7 +13,7 @@ export default function Page() {
           </p>
         </div>
         <div className="flex justify-end pt-6 gap-4">
-          <EditBtn/>
+          <NavBtn variant="link" text="Edit" route="/to-do/1/edit"/>
           <StateBtn text="I Failed :(" variant="destructive" />
           <StateBtn text="Completed" variant="default" />
         </div>

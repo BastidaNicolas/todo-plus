@@ -1,4 +1,5 @@
 import CreateBtn from "@/components/buttons/createBtn";
+import NavBtn from "@/components/buttons/navBtn";
 import TodoCard from "@/components/cards/todoCard";
 
 export default function Page() {
@@ -11,7 +12,7 @@ export default function Page() {
         <div className="flex flex-col gap-2">
           <TodoCard/>
         </div>
-        <CreateBtn/>
+        <NavBtn className="fixed bottom-4 right-2" text="Create To-Do" variant="default" route="/to-do/create" />
       </main>
     );
 }
