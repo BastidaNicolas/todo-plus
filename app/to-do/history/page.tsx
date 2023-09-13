@@ -7,7 +7,7 @@ export default function Page() {
     return (
       <main className="max-w-sm m-auto flex flex-col px-2">
         {/* make into a component */}
-        <div className="flex w-full gap-4 py-4">
+        <div className="flex w-full gap-4 pt-2 pb-4">
           <div className="flex items-center space-x-2">
             <Checkbox id="completed" value={"completed"} />
             <label
