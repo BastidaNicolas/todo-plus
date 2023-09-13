@@ -1,58 +1,34 @@
 'use client'
-import { usePathname } from "next/navigation";
-import {
-    Command,
-    CommandDialog,
-    CommandEmpty,
-    CommandGroup,
-    CommandInput,
-    CommandItem,
-    CommandList,
-    CommandSeparator,
-    CommandShortcut,
-  } from "@/components/ui/command"
-  import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
-  import {
-    DropdownMenu,
-    DropdownMenuContent,
-    DropdownMenuItem,
-    DropdownMenuLabel,
-    DropdownMenuSeparator,
-    DropdownMenuTrigger,
-  } from "@/components/ui/dropdown-menu"
-import { CalendarClock, CalendarDays, LogOut, Settings } from "lucide-react";
+import { useParams, usePathname, useRouter, useSearchParams } from "next/navigation";
+import Searchbar from "../searchbar/searchbar";
+import Nav from "../nav/nav";
+import { ChevronLeft } from "lucide-react";
+import { Button } from "../ui/button";
   
 export default function Header() {
 
-    const lol = usePathname();
+    const pathName = usePathname();
+    const param = useParams();
+    const router = useRouter();
 
-    // console.log(lol)
-
+    if(pathName === "/to-do" || pathName === "/to-do/history"){
     return (
-      <div className="max-w-sm m-auto py-2 flex items-center justify-between">
-        <Command className="rounded-lg border transition-all duration-300 focus-within:shadow-sm max-w-xs">
-      <CommandInput className="h-10" placeholder="Search..." />
-      {/* <CommandList>
-        <CommandEmpty>No results found.</CommandEmpty>
-      </CommandList> */}
-        </Command>
-        <DropdownMenu>
-  <DropdownMenuTrigger><Avatar>
-        <AvatarImage src="https://github.com/shadcn.png" />
-        <AvatarFallback>CN</AvatarFallback>
-        </Avatar></DropdownMenuTrigger>
-  <DropdownMenuContent  align="end" className="w-56">
-    <DropdownMenuLabel>My Account</DropdownMenuLabel>
-    <DropdownMenuSeparator />
-    <DropdownMenuItem><CalendarDays className="h-4 mr-2"/>List</DropdownMenuItem>
-    <DropdownMenuItem><CalendarClock className="h-4 mr-2"/>History</DropdownMenuItem>
-    <DropdownMenuItem><Settings className="h-4 mr-2"/>Settings</DropdownMenuItem>
-    <DropdownMenuSeparator />
-    <DropdownMenuItem><LogOut className="h-4 mr-2" />Log out</DropdownMenuItem>
-  </DropdownMenuContent>
-</DropdownMenu>
+      <div className="max-w-sm m-auto py-2 flex items-center justify-between gap-3 px-2">
+        <Searchbar/>
+        <Nav/>
       </div>
     );
+}
 
+return (
+    <div className="max-w-sm m-auto min-h-[56px] py-2 flex items-center relative">
+      <Button size={"icon"} variant={"link"} className="absolute" onClick={() => router.back()}><ChevronLeft className="h-6 w-6" /></Button>
+      {pathName === "/subscription" && <h1 className="text-xl font-bold w-full text-center">Subscription</h1>}
+      {pathName === "/buy-todos" && <h1 className="text-xl font-bold w-full text-center">To-do Qty</h1>}
+      {pathName === "/to-do/create" && <h1 className="text-xl font-bold w-full text-center">Create To-do</h1>}
+      {pathName === `/to-do/${param.id}` && <h1 className="text-xl font-bold w-full text-center">To-do</h1>}
+      {pathName === `/to-do/${param.id}/edit` && <h1 className="text-xl font-bold w-full text-center">Edit To-do</h1>}
+    </div>
+  );
 }
   
