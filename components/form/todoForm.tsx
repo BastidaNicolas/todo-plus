@@ -19,6 +19,9 @@ import { link } from "fs";
 import { useEffect } from "react";
 import { Switch } from "../ui/switch";
 import { Label } from "../ui/label";
+import { DateTimePicker } from "../ui/date-time-picker/date-time-picker";
+import {useDatePicker} from 'react-aria'
+import { getLocalTimeZone, parseAbsolute } from "@internationalized/date";
 
 export default function TodoForm({todoData}:{todoData?:any}) {
 
@@ -61,19 +64,27 @@ export default function TodoForm({todoData}:{todoData?:any}) {
               </FormItem>
             )}
           />
-          {/* <FormField
+          <FormField
             control={form.control}
             name="date" 
             render={({ field }) => (
               <FormItem>
                 <FormLabel>Date & time</FormLabel>
                 <FormControl>
-                 <Input type="datetime-local" {...field} />
+                 <DateTimePicker 
+                    value={!!field.value ? parseAbsolute(field.value.toISOString(), getLocalTimeZone()) : null}
+                    onChange={(date) => {
+                      field.onChange(!!date ? date.toDate(getLocalTimeZone()) : null);
+                    }}
+                    shouldCloseOnSelect={false}
+                    granularity={"minute"} 
+                    aria-label="set date and time"
+                  />
                  </FormControl>
                 <FormMessage />
               </FormItem>
             )}
-          /> */}
+          />
           <FormField
             control={form.control}
             name="description" 
