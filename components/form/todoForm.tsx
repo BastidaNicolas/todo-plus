@@ -1,0 +1,117 @@
+"use client"
+import { formSchema } from "@/types/todoFormType";
+import { zodResolver } from "@hookform/resolvers/zod"
+import { useForm } from "react-hook-form";
+import {
+    Form,
+    FormControl,
+    FormDescription,
+    FormField,
+    FormItem,
+    FormLabel,
+    FormMessage,
+} from "@/components/ui/form"
+import { Input } from "@/components/ui/input"
+import * as z from "zod";
+import { Button } from "../ui/button";
+import { Textarea } from "../ui/textarea";
+import { link } from "fs";
+import { useEffect } from "react";
+import { Switch } from "../ui/switch";
+import { Label } from "../ui/label";
+
+export default function TodoForm({todoData}:{todoData?:any}) {
+
+    const form = useForm<z.infer<typeof formSchema>>({
+        resolver: zodResolver(formSchema),
+        defaultValues:{
+            title:"",
+            date: new Date(),
+            description:"",
+            sync:false
+        }
+    })
+
+    const onSubmit = (data:any) => {
+      console.log(data)
+    }
+
+    useEffect(() => {
+      if(todoData){
+        form.setValue("title", todoData.title);
+        form.setValue("date", todoData.date);
+        form.setValue("description", todoData.description);
+        form.setValue("sync", todoData.sync);
+      }
+    }, [todoData, form])
+
+    return (
+        <Form {...form}>
+        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+          <FormField
+            control={form.control}
+            name="title"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Title</FormLabel>
+                <FormControl>
+                  <Input placeholder="this goes title" {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          {/* <FormField
+            control={form.control}
+            name="date" 
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Date & time</FormLabel>
+                <FormControl>
+                 <Input type="datetime-local" {...field} />
+                 </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          /> */}
+          <FormField
+            control={form.control}
+            name="description" 
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Description</FormLabel>
+                <FormControl>
+                  <Textarea {...field}/>
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+           <FormField
+              control={form.control}
+              name="sync"
+              render={({ field }) => (
+                <div className="flex items-center space-x-2">
+                  <FormItem className="flex items-center">
+                    <FormControl>
+                      <Switch
+                        checked={field.value}
+                        onCheckedChange={field.onChange}
+                        id="gc-sync"
+                        aria-readonly
+                      />
+                    </FormControl>
+                  </FormItem>
+                  <Label htmlFor="gc-sync" className="text-sm font-medium">Sync with Google Calendar</Label>
+                </div>
+              )}
+            />
+          <div className="flex justify-end gap-4">
+            <Button variant={"link"}>Cancel</Button>
+            <Button type="submit">Save</Button>
+          </div>
+        </form>
+    </Form>
+    );
+}
+  

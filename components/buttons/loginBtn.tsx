@@ -8,6 +8,6 @@ export default function LoginBtn() {
     const router = useRouter();
 
     return (
-        <Button onClick={() => router.push("/to-do")} ><Mail className="w-6 h-6 mr-2"/>Login with Gmail</Button>
+        <Button onClick={() => router.push("/subscription")} ><Mail className="w-6 h-6 mr-2"/>Login with Gmail</Button>
     );
   }

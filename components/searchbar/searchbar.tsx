@@ -4,9 +4,6 @@ export default function Searchbar() {
     return (
     <Command className="rounded-lg border transition-all duration-300 focus-within:shadow-md">
         <CommandInput className="h-10" placeholder="Search..." />
-        {/* <CommandList>
-            <CommandEmpty>No results found.</CommandEmpty>
-        </CommandList> */}
     </Command>
     );
 }

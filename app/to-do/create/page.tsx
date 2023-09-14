@@ -1,7 +1,9 @@
+import TodoForm from "@/components/form/todoForm";
+
 export default function Page() {
     return (
-      <main className="max-w-sm m-auto flex flex-col items-center">
-        This is for when the header and content have the same max width in the design file
+      <main className="max-w-sm m-auto flex flex-col pt-4 px-2">
+        <TodoForm/>
       </main>
     );
 }
