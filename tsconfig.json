@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    //turn this back to es5 once the official shadcn date & time input is made
     "target": "es2016",
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
@@ -13,6 +14,7 @@
     "isolatedModules": true,
     "jsx": "preserve",
     "incremental": true,
+    //also remove this
     "downlevelIteration": true,
     "plugins": [
       {
