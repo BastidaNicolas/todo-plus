@@ -69,7 +69,7 @@ export default function TodoForm({todoData}:{todoData?:any}) {
             name="date" 
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Date & time</FormLabel>
+                <FormLabel>Choose date & time</FormLabel>
                 <FormControl>
                  <DateTimePicker 
                     value={!!field.value ? parseAbsolute(field.value.toISOString(), getLocalTimeZone()) : null}
