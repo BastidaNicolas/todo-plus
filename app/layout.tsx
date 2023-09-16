@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   description: "This is the login page of To-Do",
   manifest: "/manifest/manifest.json",
   viewport: "width=device-width, initial-scale=1",
-  icons: ["manifest/icon-192x192.png"],
+  icons: ["/favicon.ico"],
   themeColor: "#ffffff",
 };
 
