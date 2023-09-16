@@ -22,8 +22,12 @@ import { Label } from "../ui/label";
 import { DateTimePicker } from "../ui/date-time-picker/date-time-picker";
 import {useDatePicker} from 'react-aria'
 import { getLocalTimeZone, parseAbsolute } from "@internationalized/date";
+import CompleteActionModal from "../modals/completeActionModal";
+import { useRouter } from "next/navigation";
 
 export default function TodoForm({todoData}:{todoData?:any}) {
+
+  const router = useRouter();
 
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
@@ -36,7 +40,11 @@ export default function TodoForm({todoData}:{todoData?:any}) {
     })
 
     const onSubmit = (data:any) => {
-      console.log(data)
+      console.log("activated", data)
+    }
+
+    const handleSubmitConfirmationConfirm = (data:any) => {
+      form.handleSubmit(onSubmit)(data);
     }
 
     useEffect(() => {
@@ -50,7 +58,7 @@ export default function TodoForm({todoData}:{todoData?:any}) {
 
     return (
         <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+        <form onSubmit={form.handleSubmit(handleSubmitConfirmationConfirm)} className="space-y-4">
           <FormField
             control={form.control}
             name="title"
@@ -118,8 +126,8 @@ export default function TodoForm({todoData}:{todoData?:any}) {
               )}
             />
           <div className="flex justify-end gap-4">
-            <Button variant={"link"}>Cancel</Button>
-            <Button type="submit">Save</Button>
+            <Button type="reset" variant={"link"} onClick={() => router.back()} >Cancel</Button>
+            <CompleteActionModal formIsValid={form.formState.isValid} onSubmit={handleSubmitConfirmationConfirm} btnText="Save" />
           </div>
         </form>
     </Form>
