@@ -20,9 +20,9 @@ export default function Page() {
       <main >
         <Header/>
         <div className="max-w-sm m-auto flex flex-col items-end gap-2 px-2 pt-2">
-          <ProductCard code={100} selected={qty} onClick={handleSelect}/>
-          <ProductCard code={200} selected={qty} onClick={handleSelect}/>
-          <ProductCard code={300} selected={qty} onClick={handleSelect}/>
+          <ProductCard title="Write 500 To-Dos" price={"4,99"} code={500} selected={qty} onClick={handleSelect}/>
+          <ProductCard title="Write 1000 To-Dos" price={"9,99"} code={1000} selected={qty} onClick={handleSelect}/>
+          <ProductCard title="Write 2000 To-Dos" price={"19,99"} code={2000} selected={qty} onClick={handleSelect}/>
           <div className="flex gap-4 items-center w-full py-6" >
             <Input placeholder="Add custom amount" type="number" onChange={(e) => handleSelect(Number(e.target.value))} value={qty}/>
             <small className="w-20 font-medium text-sm text-right" >$0</small>
