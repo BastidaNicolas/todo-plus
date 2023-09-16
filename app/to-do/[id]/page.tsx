@@ -1,6 +1,7 @@
 "use client"
 import NavBtn from "@/components/buttons/navBtn";
 import StateBtn from "@/components/buttons/stateBtn";
+import CompleteActionModal from "@/components/modals/completeActionModal";
 import { useState } from "react";
 
 export default function Page() {
@@ -26,8 +27,8 @@ export default function Page() {
           <NavBtn variant="link" text="Edit" route="/to-do/1/edit"/>
           {!tempState ?
             <>
-              <StateBtn onClick={handleFailure} text="I Failed :(" variant="destructive" />
-              <StateBtn onClick={handleSuccess} text="Completed" variant="default" />
+              <CompleteActionModal btnText="I Failed :(" onSubmit={handleFailure} formIsValid={true} variant="destructive"/>
+              <CompleteActionModal btnText="Completed" onSubmit={handleSuccess} formIsValid={true}/>
             </>
             :
             <></>
