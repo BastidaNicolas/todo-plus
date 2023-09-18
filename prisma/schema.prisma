@@ -8,8 +8,38 @@ datasource db {
   relationMode = "prisma"
 }
 
-model Email {
-  id        Int      @id @default(autoincrement())
-  createdAt DateTime @default(now())
-  email     String   @unique
+model User {
+  user_id              Int       @id @default(autoincrement())
+  email                String    @unique
+  google_id            String    @unique
+  subscription_status  String
+  subscription_expiration_date DateTime?
+  
+  subscriptions Subscription[]
+  
+  todos Todo[]
+}
+
+model Subscription {
+  subscription_id    Int      @id @default(autoincrement())
+  user_id            Int
+  subscription_type  String
+  subscription_start_date DateTime
+  subscription_end_date   DateTime
+
+  user User @relation(fields: [user_id], references: [user_id])
+  @@index([user_id])
+}
+
+model Todo {
+  todo_id    Int    @id @default(autoincrement())
+  user_id    Int
+  title      String
+  date       DateTime
+  description String
+  sync_option Boolean
+  state      String
+
+  user User @relation(fields: [user_id], references: [user_id])
+  @@index([user_id])
 }
