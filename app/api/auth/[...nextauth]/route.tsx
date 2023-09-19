@@ -14,20 +14,20 @@ const authOptions:NextAuthOptions = {
       })
   ],
   secret: process.env.NEXTAUTH_SECRET,
-  callbacks:{
-    async session({ session, user }) {
-    //   Add necessary values into the session so the user can access them when needed
-    //   session!.user!.id = user.id;
-    //   session!.user!.stripeCustomerId = user.stripeCustomerId;
-    //   session!.user!.isActive = user.isActive;
-      return session;
-    },
-  },
-  events:{
-    async createUser(message){
-        // create stripe customer and add it's id to the user in the db
-    }
-  }
+  // callbacks:{
+  //   async session({ session, user }) {
+  //   //   Add necessary values into the session so the user can access them when needed
+  //   //   session!.user!.id = user.id;
+  //   //   session!.user!.stripeCustomerId = user.stripeCustomerId;
+  //   //   session!.user!.isActive = user.isActive;
+  //     return session;
+  //   },
+  // },
+  // events:{
+  //   async createUser(message){
+  //       // create stripe customer and add it's id to the user in the db
+  //   }
+  // }
 };
 
 const handler = NextAuth(authOptions);

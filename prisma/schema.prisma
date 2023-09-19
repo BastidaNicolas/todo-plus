@@ -8,48 +8,48 @@ datasource db {
   relationMode = "prisma"
 }
 
-model User {
-  user_id                    String         @id @default(cuid())
-  name                       String?
-  email                      String?        @unique
-  email_verified             DateTime?
-  image                      String?
-  stripe_customer_id         String?        @unique
-  stripe_subscription_active Boolean        @default(false)
-  accounts                   Account[]
-  sessions                   Session[]
-  subscription               Subscription[]
-  todos                      Todo[]
-}
-
 model Account {
-  id                  String  @id @default(cuid())
-  user_id             String
-  type                String
-  provider            String
-  provider_account_id String
-  refresh_token       String? @db.Text
-  access_token        String? @db.Text
-  expires_at          Int?
-  token_type          String?
-  scope               String?
-  id_token            String? @db.Text
-  session_state       String?
+  id                String  @id @default(cuid())
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String? @db.Text
+  access_token      String? @db.Text
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String? @db.Text
+  session_state     String?
 
-  user User @relation(fields: [user_id], references: [user_id], onDelete: Cascade)
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 
-  @@unique([provider, provider_account_id])
-  @@index([user_id])
+  @@unique([provider, providerAccountId])
+  @@index([userId])
 }
 
 model Session {
-  id            String   @id @default(cuid())
-  session_token String   @unique
-  user_id       String
-  expires       DateTime
-  user          User     @relation(fields: [user_id], references: [user_id], onDelete: Cascade)
+  id           String   @id @default(cuid())
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 
-  @@index([user_id])
+  @@index([userId])
+}
+
+model User {
+  id               String         @id @default(cuid())
+  name             String?
+  email            String?        @unique
+  emailVerified    DateTime?
+  image            String?
+  stripeCustomerId String?        @unique
+  isActive         Boolean        @default(false)
+  accounts         Account[]
+  sessions         Session[]
+  subscription     Subscription[]
+  todos            Todo[]
 }
 
 model VerificationToken {
@@ -62,26 +62,26 @@ model VerificationToken {
 
 model Subscription {
   subscription_id         Int      @id @default(autoincrement())
-  user_id                 String
+  userId                  String
   subscription_type       String
   subscription_start_date DateTime
   subscription_end_date   DateTime
 
-  user User @relation(fields: [user_id], references: [user_id], onDelete: Cascade)
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 
-  @@index([user_id])
+  @@index([userId])
 }
 
 model Todo {
   todo_id     Int      @id @default(autoincrement())
-  user_id     String
+  userId      String
   title       String
   date        DateTime
   description String
   sync_option Boolean
   state       String
 
-  user User @relation(fields: [user_id], references: [user_id], onDelete: Cascade)
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 
-  @@index([user_id])
+  @@index([userId])
 }
