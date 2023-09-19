@@ -1,7 +1,17 @@
+"use client"
 import Logo from '@/components/SVGs/logo';
 import LoginBtn from '@/components/buttons/loginBtn';
+import { useSession } from 'next-auth/react';
+import { useRouter } from 'next/navigation';
 
 export default function Home() {
+
+  const session = useSession();
+  const router = useRouter();
+
+  if(session.status === "authenticated"){
+    router.push("/to-do")
+  }
 
   return (
     <main className="max-w-sm m-auto flex flex-col items-center justify-between h-screen">
