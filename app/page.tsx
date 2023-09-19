@@ -9,7 +9,7 @@ export default function Home() {
   const session = useSession();
   const router = useRouter();
 
-  if(session.status === "authenticated"){
+  if(session){
     router.push("/to-do")
   }
 
