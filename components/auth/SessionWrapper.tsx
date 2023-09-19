@@ -4,6 +4,6 @@ import { ReactNode } from "react";
 
 export default function SessionWrapper({ children }: { children: ReactNode }) {
   return (
-    <SessionProvider>{children}</SessionProvider>
+    <SessionProvider refetchWhenOffline={false} >{children}</SessionProvider>
     );
 }
