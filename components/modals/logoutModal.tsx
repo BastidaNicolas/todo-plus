@@ -8,6 +8,7 @@ import {
     AlertDialogTrigger,
   } from "@/components/ui/alert-dialog"
 import { LogOut } from "lucide-react";
+import { signOut } from "next-auth/react";
 export default function LogoutModal() {
     return (
         <>
@@ -18,7 +19,7 @@ export default function LogoutModal() {
                 </AlertDialogHeader>
                 <AlertDialogFooter>
                 <AlertDialogCancel>Cancel</AlertDialogCancel>
-                <AlertDialogAction>Logout</AlertDialogAction>
+                <AlertDialogAction onClick={() => signOut({ callbackUrl: "/" })}>Logout</AlertDialogAction>
                 </AlertDialogFooter>
             </AlertDialogContent>
       </>
