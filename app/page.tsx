@@ -9,7 +9,7 @@ export default function Home() {
   const session = useSession();
   const router = useRouter();
 
-  if(session){
+  if(session.status){
     router.push("/to-do")
   }
 
