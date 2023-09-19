@@ -2,7 +2,6 @@
 import NavBtn from "@/components/buttons/navBtn";
 import ProductCard from "@/components/cards/productCard";
 import Header from "@/components/header/Header";
-import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useState } from "react";
 
 export default function Page() {

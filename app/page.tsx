@@ -1,10 +1,5 @@
 import Logo from '@/components/SVGs/logo';
 import LoginBtn from '@/components/buttons/loginBtn';
-import { Button } from '@/components/ui/button';
-import { Mail } from 'lucide-react';
-import Image from 'next/image'
-import Link from 'next/link'
-import { useRouter } from 'next/navigation';
 
 export default function Home() {
 

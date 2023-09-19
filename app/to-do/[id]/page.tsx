@@ -1,6 +1,5 @@
 "use client"
 import NavBtn from "@/components/buttons/navBtn";
-import StateBtn from "@/components/buttons/stateBtn";
 import CompleteActionModal from "@/components/modals/completeActionModal";
 import { useState } from "react";
 
