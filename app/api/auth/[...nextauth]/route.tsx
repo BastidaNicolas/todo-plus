@@ -1,10 +1,10 @@
 import prisma from "@/lib/prisma"
-import NextAuth from "next-auth"
+import NextAuth, { NextAuthOptions } from "next-auth"
 import { PrismaAdapter } from "@auth/prisma-adapter"
 import { Adapter } from "next-auth/adapters"
 import GoogleProvider from "next-auth/providers/google"
 
-export const handler = NextAuth({
+export const authOptions:NextAuthOptions = {
     adapter: PrismaAdapter(prisma) as Adapter,
   // Configure one or more authentication providers
   providers: [
@@ -13,6 +13,7 @@ export const handler = NextAuth({
         clientSecret: process.env.GOOGLE_CLIENT_SECRET!
       })
   ],
+  secret: process.env.NEXTAUTH_SECRET,
   callbacks:{
     async session({ session, user }) {
     //   Add necessary values into the session so the user can access them when needed
@@ -27,14 +28,8 @@ export const handler = NextAuth({
         // create stripe customer and add it's id to the user in the db
     }
   }
-})
+};
 
-export { handler as GET, handler as POST }
+const handler = NextAuth(authOptions);
 
-// Need to do to the DB 
-// - Add session model
-// - Vinculate to the user
-// - 
-// - 
-// - 
-// - 
+export { handler as GET, handler as POST };
