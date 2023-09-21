@@ -23,7 +23,7 @@ export default function Page() {
           </p>
         </div>
         <div className={`flex justify-end pt-6 gap-4`}>
-          <NavBtn variant="link" text="Edit" route="/to-do/1/edit"/>
+          <NavBtn variant="link" text="Edit" route="/1/edit"/>
           {!tempState ?
             <>
               <CompleteActionModal btnText="I Failed :(" onSubmit={handleFailure} formIsValid={true} variant="destructive"/>

@@ -19,7 +19,7 @@ export default function LogoutModal() {
                 </AlertDialogHeader>
                 <AlertDialogFooter>
                 <AlertDialogCancel>Cancel</AlertDialogCancel>
-                <AlertDialogAction onClick={() => signOut({ callbackUrl: "/" })}>Logout</AlertDialogAction>
+                <AlertDialogAction onClick={() => signOut({ callbackUrl: "/login" })}>Logout</AlertDialogAction>
                 </AlertDialogFooter>
             </AlertDialogContent>
       </>

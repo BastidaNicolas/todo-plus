@@ -2,6 +2,7 @@ import SessionWrapper from '@/components/auth/SessionWrapper';
 import './globals.css'
 import type { Metadata } from 'next'
 import { Roboto } from 'next/font/google'
+import Header from '@/components/header/Header';
 
 const inter = Roboto({weight:['100','300',"400",'500','700','900'],subsets:['cyrillic','latin']})
 
@@ -23,6 +24,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <SessionWrapper>
+          <Header/>
           {children}
         </SessionWrapper>
       </body>
