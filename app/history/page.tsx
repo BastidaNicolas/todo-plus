@@ -30,7 +30,7 @@ export default function Page() {
         <div className="flex flex-col gap-2">
           <TodoCard/>
         </div>
-        <NavBtn className="fixed bottom-4 right-2" text="Create To-Do" variant="default" route="/to-do/create" />
+        <NavBtn className="fixed bottom-4 right-2" text="Create To-Do" variant="default" route="/create" />
       </main>
     );
 }

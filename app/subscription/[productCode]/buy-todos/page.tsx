@@ -18,7 +18,6 @@ export default function Page() {
 
     return (
       <main >
-        <Header/>
         <div className="max-w-sm m-auto flex flex-col items-end gap-2 px-2 pt-2">
           <ProductCard title="Write 500 To-Dos" price={"4,99"} code={500} selected={qty} onClick={handleSelect}/>
           <ProductCard title="Write 1000 To-Dos" price={"9,99"} code={1000} selected={qty} onClick={handleSelect}/>
@@ -28,7 +27,7 @@ export default function Page() {
             <small className="w-20 font-medium text-sm text-right" >$0</small>
           </div>
           {/* make this into a button that recieves the qty and sub code so it genarates the stripe checkout and does the redir */}
-          <NavBtn route="/to-do" text="Go to checkout" variant="default" /> 
+          <NavBtn route="/" text="Go to checkout" variant="default" /> 
         </div>
       </main>
     );

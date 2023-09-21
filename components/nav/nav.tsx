@@ -27,8 +27,8 @@ export default function Nav() {
           <DropdownMenuContent  align="end" className="w-56">
             <DropdownMenuLabel>myemail@gmail.com</DropdownMenuLabel>
             <DropdownMenuSeparator />
-            <DropdownMenuItem onClick={() => router.push("/to-do")} ><CalendarDays className="h-4 mr-2"/>To-Do</DropdownMenuItem>
-            <DropdownMenuItem onClick={() => router.push("/to-do/history")} ><CalendarClock className="h-4 mr-2"/>History</DropdownMenuItem>
+            <DropdownMenuItem onClick={() => router.push("/")} ><CalendarDays className="h-4 mr-2"/>To-Do</DropdownMenuItem>
+            <DropdownMenuItem onClick={() => router.push("/history")} ><CalendarClock className="h-4 mr-2"/>History</DropdownMenuItem>
             <DropdownMenuItem ><Settings className="h-4 mr-2"/>Settings</DropdownMenuItem>
             <DropdownMenuSeparator />
             <DropdownMenuItem onSelect={(e) => e.preventDefault()}><LogoutModal/></DropdownMenuItem>
