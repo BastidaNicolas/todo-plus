@@ -6,7 +6,10 @@ import GoogleProvider from "next-auth/providers/google"
 
 const authOptions:NextAuthOptions = {
     adapter: PrismaAdapter(prisma) as Adapter,
-  // Configure one or more authentication providers
+    pages: {
+      signIn: "/login",
+    },
+    // Configure one or more authentication providers
   providers: [
     GoogleProvider({
         clientId: process.env.GOOGLE_CLIENT_ID!,
