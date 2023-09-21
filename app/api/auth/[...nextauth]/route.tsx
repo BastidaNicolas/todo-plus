@@ -5,10 +5,10 @@ import { Adapter } from "next-auth/adapters"
 import GoogleProvider from "next-auth/providers/google"
 
 const authOptions:NextAuthOptions = {
+  pages: {
+    signIn: "/login",
+  },
     adapter: PrismaAdapter(prisma) as Adapter,
-    pages: {
-      signIn: "/login",
-    },
     // Configure one or more authentication providers
   providers: [
     GoogleProvider({
