@@ -11,6 +11,8 @@ export default async function Home() {
     redirect("/login")
   }
 
+  console.log("HOME SERVER SIDE SESSION", session)
+
   return (
     <main className="max-w-sm m-auto flex flex-col items-center px-2 pt-2">
         <div className="flex justify-between items-center w-full pb-4">

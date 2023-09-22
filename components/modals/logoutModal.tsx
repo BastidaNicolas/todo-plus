@@ -12,7 +12,7 @@ import { signOut } from "next-auth/react";
 export default function LogoutModal() {
     return (
         <>
-            <AlertDialogTrigger className="flex w-full" ><LogOut className="h-4 mr-2" />Log out</AlertDialogTrigger>
+            <AlertDialogTrigger className="flex w-full"><LogOut className="h-4 mr-2" />Log out</AlertDialogTrigger>
             <AlertDialogContent className="max-w-xs" >
                 <AlertDialogHeader>
                 <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
