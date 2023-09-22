@@ -4,7 +4,7 @@ import { PrismaAdapter } from "@auth/prisma-adapter"
 import { Adapter } from "next-auth/adapters"
 import GoogleProvider from "next-auth/providers/google"
 
-const authOptions:NextAuthOptions = {
+export const authOptions:NextAuthOptions = {
   pages: {
     signIn: "/login",
   },
