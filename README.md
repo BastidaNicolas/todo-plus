@@ -1,3 +1,5 @@
+# I won't be continuing with this project; I removed the database, so the login system on the live demo will not work.
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
